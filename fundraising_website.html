@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lions Club | Together We Can Make a Difference</title>
+    <style>
+        :root {
+            --primary: #004B9B;
+            --primary-dark: #004B9B;
+            --secondary: #004B9B;
+            --secondary-dark: #343a40;
+            --light: #FdB913;
+            --dark: #343a40;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            z-index: 3;
+        }
+        
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .logo-icon {
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(58, 123, 213, 0.3);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--secondary-dark);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+        
+        .btn-large {
+            padding: 16px 32px;
+            font-size: 18px;
+        }
+        
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/800') center/cover no-repeat;
+            color: white;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            /* your gradient, sweetie 💫 */
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+            z-index: 2;
+        }
+
+        
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        p {
+            margin-bottom: 20px;
+        }
+        
+        .stats {
+            display: flex;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .stat-box {
+            flex: 1;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-10px);
+        }
+        
+        .stat-number {
+            font-size: 42px;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .causes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .cause-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .cause-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .cause-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .cause-content {
+            padding: 20px;
+        }
+        
+        .cause-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background-color: var(--primary);
+            border-radius: 5px;
+        }
+        
+        .donation-goal {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        
+        .testimonials {
+            background-color: #f1f5f9;
+        }
+        
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .testimonial {
+            padding: 40px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-text {
+            font-size: 18px;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .cta {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/600') center/cover no-repeat;
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta h2 {
+            color: white;
+        }
+        
+        .donation-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .donation-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .donation-option {
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .donation-option:hover {
+            border-color: var(--primary);
+        }
+        
+        .donation-option.selected {
+            border-color: var(--primary);
+            background-color: rgba(58, 123, 213, 0.1);
+        }
+        
+        .donation-amount {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        #home-screen, #donate-screen {
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        .hidden {
+            display: none;
+            opacity: 0;
+        }
+        
+        .visible {
+            display: block;
+            opacity: 1;
+        }
+        
+        .impact-stories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .impact-story {
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .impact-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .impact-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .impact-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .counter-section {
+            background-color: var(--primary);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .counter-boxes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .counter-box {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        
+        .counter {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .counter-text {
+            font-size: 18px;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+            
+            h2 {
+                font-size: 28px;
+            }
+            
+            .stats {
+                flex-direction: column;
+            }
+            
+            .donation-options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <span class="logo-icon"><img src="lions_logo.png" alt="icon" style="vertical-align: middle;" width="34" height="34"></span> District 301-D1
+                </div>
+                <div class="nav-links">
+                    <a href="#" class="active" id="home-link" onclick="showHome()">Home</a>
+                    <a href="donation_screen.html" id="donate-link" onclick="showDonate()">Donate</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Screen -->
+    <div id="home-screen" class="visible">
+        <section class="hero">
+            <div class="overlay"></div>
+            <img src="outreach1.jpg" alt="Hero Image" class="hero-img">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>We Serve</h1>
+                    <p>Join our mission to create positive change in communities around the world. Your donation can transform lives and build a brighter future for those in need.</p>
+                    <a href="#" class="btn btn-secondary btn-large" onclick="showDonate()">Donate Now</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="stats">
+                    <div class="stat-box">
+                        <div class="stat-number">$2.4M</div>
+                        <p>Raised This Year</p>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">42K</div>
+                        <p>People Helped</p>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">12K</div>
+                        <p>Generous Donors</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Current Initiatives</h2>
+                    <p>Your support helps fund these important causes and makes a real difference in people's lives.</p>
+                </div>
+                <div class="causes">
+                    <div class="cause-card">
+                        <img src="activity2.jpg" alt="Education Initiative" class="cause-img">
+                        <div class="cause-content">
+                            <h3 class="cause-title">Education for All</h3>
+                            <p>Providing quality education to underserved communities and giving children the tools they need to succeed.</p>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 75%;"></div>
+                            </div>
+                            <div class="donation-goal">
+                                <span>$75,000 Raised</span>
+                                <span>$100,000 Goal</span>
+                            </div>
+                            <a href="#" class="btn" onclick="showDonate()">Support This Cause</a>
+                        </div>
+                    </div>
+                    
+                    <div class="cause-card">
+                        <img src="activity4.jpg" alt="Healthcare Initiative" class="cause-img">
+                        <div class="cause-content">
+                            <h3 class="cause-title">Healthcare Access</h3>
+                            <p>Expanding medical services to remote areas and ensuring everyone has access to essential healthcare.</p>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 45%;"></div>
+                            </div>
+                            <div class="donation-goal">
+                                <span>$67,500 Raised</span>
+                                <span>$150,000 Goal</span>
+                            </div>
+                            <a href="#" class="btn" onclick="showDonate()">Support This Cause</a>
+                        </div>
+                    </div>
+                    
+                    <div class="cause-card">
+                        <img src="activity_kalinisan3.jpg" alt="Environmental Initiative" class="cause-img">
+                        <div class="cause-content">
+                            <h3 class="cause-title">Environmental Protection</h3>
+                            <p>Preserving natural resources and implementing sustainable solutions for a healthier planet.</p>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 60%;"></div>
+                            </div>
+                            <div class="donation-goal">
+                                <span>$60,000 Raised</span>
+                                <span>$100,000 Goal</span>
+                            </div>
+                            <a href="#" class="btn" onclick="showDonate()">Support This Cause</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section counter-section">
+            <div class="container">
+                <h2>Our Impact By The Numbers</h2>
+                <div class="counter-boxes">
+                    <div class="counter-box">
+                        <div class="counter">20+</div>
+                        <div class="counter-text">Years of Service</div>
+                    </div>
+                    <div class="counter-box">
+                        <div class="counter">35</div>
+                        <div class="counter-text">Countries Reached</div>
+                    </div>
+                    <div class="counter-box">
+                        <div class="counter">180K</div>
+                        <div class="counter-text">Lives Transformed</div>
+                    </div>
+                    <div class="counter-box">
+                        <div class="counter">5M+</div>
+                        <div class="counter-text">Dollars Invested</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section testimonials">
+            <div class="container">
+                <div class="section-title">
+                    <h2>What Our Supporters Say</h2>
+                </div>
+                <div class="testimonial-slider">
+                    <div class="testimonial">
+                        <p class="testimonial-text">"I've been donating to Hearts United for over 10 years now. The transparency and impact of their programs is what keeps me coming back. I've personally visited some of their projects and seen how they transform communities."</p>
+                        <div class="testimonial-author">- Margaret D., Monthly Donor</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Success Stories</h2>
+                    <p>See how your donations have made a real difference in people's lives.</p>
+                </div>
+                <div class="impact-stories">
+                    <div class="impact-story">
+                        <img src="acitivity_kalinisan1.jpg" alt="Success Story 1" class="impact-img">
+                        <div class="impact-content">
+                            <h3 class="impact-title">Mother's Hearts Network - Rodriguez Rizal</h3>
+                            <p>Celebrated the Women's Month by taking care of the environment. Launching the "Araw ng Kalinisan" - A Clean Up Drive at Phase 4 Eastwood Residences, Rodriguez Rizal.</p>
+                        </div>
+                    </div>
+                    <div class="impact-story">
+                        <img src="dumagat_service.jpg" alt="Success Story 2" class="impact-img">
+                        <div class="impact-content">
+                            <h3 class="impact-title">Lions Visit the dumagats</h3>
+                            <p>The Lions Club International District 301-D1 led by District Governor Marco Soriano conducted its gift giving and feeding program to the Dumagat Tribes, January 18, 2025 at Angat Dam Norzagaray, Bulacan.</p>
+                        </div>
+                    </div>
+                    <div class="impact-story">
+                        <img src="activities1.jpg" alt="Success Story 3" class="impact-img">
+                        <div class="impact-content">
+                            <h3 class="impact-title">QC Bahaghari Executive Lions Club supported the 105th 1st TAS Brigade</h3>
+                            <p>Rescue Training in preparation for the Big One.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to Make a Difference?</h2>
+                    <p>Your contribution, no matter how small, helps us continue our vital work around the world. Join thousands of compassionate donors who are creating positive change.</p>
+                    <a href="#" class="btn btn-secondary btn-large" onclick="showDonate()">Donate Now</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Donate Screen -->
+    <div id="donate-screen" class="hidden">
+        <section class="hero" style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('/api/placeholder/1200/800') center/cover no-repeat;">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Make Your Donation Today</h1>
+                    <p>Your generosity powers our mission to create positive change. Every donation, large or small, makes a real difference in the lives of those we serve.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="donation-form">
+                    <h2>Your Donation Details</h2>
+                    <p>Please complete the form below to make your donation. All transactions are secure and encrypted.</p>
+                    
+                    <form id="donation-form">
+                        <div class="form-group">
+                            <label for="donation-cause">I want to support:</label>
+                            <select id="donation-cause">
+                                <option value="all">Where it's needed most</option>
+                                <option value="education">Education for All</option>
+                                <option value="healthcare">Healthcare Access</option>
+                                <option value="environment">Environmental Protection</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Select donation amount:</label>
+                            <div class="donation-options">
+                                <div class="donation-option" onclick="selectAmount(this, 50)">
+                                    <div class="donation-amount">$50</div>
+                                    <p>Provides school supplies for 10 children</p>
+                                </div>
+                                <div class="donation-option" onclick="selectAmount(this, 100)">
+                                    <div class="donation-amount">$100</div>
+                                    <p>Funds a mobile health clinic for a day</p>
+                                </div>
+                                <div class="donation-option" onclick="selectAmount(this, 250)">
+                                    <div class="donation-amount">$250</div>
+                                    <p>Plants 100 trees in deforested areas</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="custom-amount">Or enter a custom amount:</label>
+                            <input type="number" id="custom-amount" placeholder="Enter amount in $">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="donation-type">Donation frequency:</label>
+                            <select id="donation-type">
+                                <option value="one-time">One-time donation</option>
+                                <option value="monthly">Monthly donation</option>
+                                <option value="quarterly">Quarterly donation</option>
+                                <option value="yearly">Yearly donation</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="donor-name">Your name:</label>
+                            <input type="text" id="donor-name" placeholder="First and last name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="donor-email">Email address:</label>
+                            <input type="email" id="donor-email" placeholder="Your email">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="donor-phone">Phone number (optional):</label>
+                            <input type="tel" id="donor-phone" placeholder="Your phone number">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="donor-message">Personal message (optional):</label>
+                            <textarea id="donor-message" rows="3" placeholder="Share why you're donating..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <button type="button" class="btn btn-secondary btn-large" style="width: 100%;">Proceed to Payment</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="section testimonials">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Why Your Donation Matters</h2>
+                </div>
+                <div class="testimonial-slider">
+                    <div class="testimonial">
+                        <p class="testimonial-text">"The new well in our village has transformed our daily lives. Our children no longer get sick from contaminated water, and women don't have to walk for hours to collect water. Thank you to everyone who made this possible."</p>
+                        <div class="testimonial-author">- Amara L., Community Member</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <p>QC Bahaghari Lions Club (District 301-D1) is an organization dedicated to creating sustainable solutions for communities facing challenges around the world.</p>
+                    <div class="social-icons">
+                        <a href="#"><span>📱</span></a>
+                        <a href="#"><span>📘</span></a>
+                        <a href="#"><span>📸</span></a>
+                        <a href="#"><span>📹</span></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#" onclick="showHome()">Home</a></li>
+                        <li><a href="#" onclick="showDonate()">Donate</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Projects</a></li>
+                        <li><a href="#">News & Updates</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li>Quezon City, Philippines</li>
+                        <li>Phone: (555) 123-4567</li>
+                        <li>Email: qcbahagharilionsclub@gmail.com</li>
+                        <li>Hours: Mon-Fri 9am - 5pm</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to receive updates about our work and upcoming events.</p>
+                    <form>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your email address">
+                        </div>
+                        <button type="button" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 QC Bahaghari 301-D1 Lions Club. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showHome() {
+            document.getElementById('home-screen').classList.add('visible');
+            document.getElementById('home-screen').classList.remove('hidden');
+            document.getElementById('donate-screen').classList.add('hidden');
+            document.getElementById('donate-screen').classList.remove('visible');
+            
+            document.getElementById('home-link').classList.add('active');
+            document.getElementById('donate-link').classList.remove('active');
+            
+            window.scrollTo(0, 0);
+        }
+        
+        function showDonate() {
+            document.getElementById('donate-screen').classList.add('visible');
+            document.getElementById('donate-screen').classList.remove('hidden');
+            document.getElementById('home-screen').classList
+        }
+     </script>
