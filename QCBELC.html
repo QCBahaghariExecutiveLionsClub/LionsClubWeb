@@ -4,538 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lions Club | Together We Can Make a Difference</title>
-    <style>
-        :root {
-            --primary: #004B9B;
-            --primary-dark: #004B9B;
-            --secondary: #004B9B;
-            --secondary-dark: #343a40;
-            --light: #FdB913;
-            --dark: #343a40;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            z-index: 3;
-        }
-        
-        header {
-            background-color: #fff;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--primary);
-        }
-        
-        .logo-icon {
-            color: var(--secondary);
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            transition: color 0.3s;
-            padding: 8px 16px;
-            border-radius: 4px;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        
-        .nav-links a.active {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background-color: var(--primary);
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        
-        .btn:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(58, 123, 213, 0.3);
-        }
-        
-        .btn-secondary {
-            background-color: var(--secondary);
-        }
-        
-        .btn-secondary:hover {
-            background-color: var(--secondary-dark);
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
-        }
-        
-        .btn-large {
-            padding: 16px 32px;
-            font-size: 18px;
-        }
-        
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/800') center/cover no-repeat;
-            color: white;
-            padding-top: 80px;
-        }
-        
-        .hero-content {
-            max-width: 600px;
-        }
-
-        .hero-img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            object-fit: cover;
-            z-index: 1;
-        }
-
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            /* your gradient, sweetie 💫 */
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
-            z-index: 2;
-        }
-
-        
-        h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-        
-        h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-        
-        p {
-            margin-bottom: 20px;
-        }
-        
-        .stats {
-            display: flex;
-            gap: 30px;
-            margin: 40px 0;
-        }
-        
-        .stat-box {
-            flex: 1;
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: transform 0.3s;
-        }
-        
-        .stat-box:hover {
-            transform: translateY(-10px);
-        }
-        
-        .stat-number {
-            font-size: 42px;
-            font-weight: bold;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-        
-        .section {
-            padding: 80px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        
-        .causes {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .cause-card {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-        
-        .cause-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .cause-img {
-            height: 200px;
-            width: 100%;
-            object-fit: cover;
-        }
-        
-        .cause-content {
-            padding: 20px;
-        }
-        
-        .cause-title {
-            font-size: 24px;
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
-        
-        .progress-bar {
-            height: 10px;
-            background-color: #e9ecef;
-            border-radius: 5px;
-            margin: 15px 0;
-            overflow: hidden;
-        }
-        
-        .progress {
-            height: 100%;
-            background-color: var(--primary);
-            border-radius: 5px;
-        }
-        
-        .donation-goal {
-            display: flex;
-            justify-content: space-between;
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
-        
-        .testimonials {
-            background-color: #f1f5f9;
-        }
-        
-        .testimonial-slider {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .testimonial {
-            padding: 40px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .testimonial-text {
-            font-size: 18px;
-            font-style: italic;
-            margin-bottom: 20px;
-        }
-        
-        .testimonial-author {
-            font-weight: 600;
-            color: var(--primary);
-        }
-        
-        .cta {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/600') center/cover no-repeat;
-            color: white;
-            text-align: center;
-        }
-        
-        .cta-content {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .cta h2 {
-            color: white;
-        }
-        
-        .donation-form {
-            max-width: 700px;
-            margin: 0 auto;
-            background-color: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-        
-        input, select, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-        
-        .donation-options {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        
-        .donation-option {
-            padding: 15px;
-            border: 2px solid #ddd;
-            border-radius: 6px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .donation-option:hover {
-            border-color: var(--primary);
-        }
-        
-        .donation-option.selected {
-            border-color: var(--primary);
-            background-color: rgba(58, 123, 213, 0.1);
-        }
-        
-        .donation-amount {
-            font-size: 24px;
-            font-weight: 600;
-            color: var(--primary);
-        }
-        
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 60px 0 20px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-column h3 {
-            font-size: 20px;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background-color: var(--secondary);
-        }
-        
-        .footer-column ul {
-            list-style: none;
-        }
-        
-        .footer-column ul li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-column a {
-            color: #ddd;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-column a:hover {
-            color: white;
-        }
-        
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 15px;
-        }
-        
-        .social-icons a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transition: all 0.3s;
-        }
-        
-        .social-icons a:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        #home-screen, #donate-screen {
-            transition: opacity 0.5s ease-in-out;
-        }
-        
-        .hidden {
-            display: none;
-            opacity: 0;
-        }
-        
-        .visible {
-            display: block;
-            opacity: 1;
-        }
-        
-        .impact-stories {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .impact-story {
-            display: flex;
-            flex-direction: column;
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .impact-img {
-            height: 200px;
-            width: 100%;
-            object-fit: cover;
-        }
-        
-        .impact-content {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .impact-title {
-            font-size: 20px;
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
-        
-        .counter-section {
-            background-color: var(--primary);
-            color: white;
-            padding: 60px 0;
-            text-align: center;
-        }
-        
-        .counter-boxes {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .counter-box {
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-        }
-        
-        .counter {
-            font-size: 48px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        
-        .counter-text {
-            font-size: 18px;
-        }
-        
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 36px;
-            }
-            
-            h2 {
-                font-size: 28px;
-            }
-            
-            .stats {
-                flex-direction: column;
-            }
-            
-            .donation-options {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link href="stylesheet.css" rel="stylesheet"/>
 </head>
 <body>
     <header>
@@ -831,6 +300,64 @@
             </div>
         </section>
     </div>
+    
+     <!-- ── Chatbot launch button ─────────────────────────────────────── -->
+<button id="launch-btn" aria-label="Open chat assistant" title="Chat with AI">
+  <!-- chat icon -->
+  <svg class="icon-chat" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+  </svg>
+  <!-- close icon -->
+  <svg class="icon-close" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+  </svg>
+</button>
+
+<!-- ── Chat widget ───────────────────────────────────────────────── -->
+<div id="chat-widget" role="dialog" aria-label="AI Chat Assistant" aria-modal="true">
+
+  <div class="chat-header">
+    <div class="chat-header-title">
+      <strong>AI Assistant</strong>
+      <small>Qwen · local model</small>
+    </div>
+    <div id="status-pill">
+      <span id="status-dot" class="offline"></span>
+      <span id="status-text">Offline</span>
+    </div>
+  </div>
+
+  <div class="chat-body" id="chat-body">
+    <div class="msg system">Say hello to get started ↓</div>
+    <div id="offline-notice">
+      ⚠ Server is unreachable. Please start your local server.
+    </div>
+  </div>
+
+  <!-- ── Shortcut chips ── -->
+  <div id="shortcuts" aria-label="Quick message suggestions">
+    <button class="chip" data-msg="👋 Hello! What can you do?"><span class="chip-icon">👋</span> Hello! What can you do?</button>
+    <button class="chip" data-msg="Explain yourself in one sentence."><span class="chip-icon">🤖</span> Who are you?</button>
+    <button class="chip" data-msg="Give me a fun fact."><span class="chip-icon">💡</span> Fun fact</button>
+    <button class="chip" data-msg="Write a short poem about the internet."><span class="chip-icon">✍️</span> Write a poem</button>
+    <button class="chip" data-msg="What are your limitations?"><span class="chip-icon">🔍</span> Your limits</button>
+    <button class="chip" data-msg="Tell me a joke!"><span class="chip-icon">😄</span> Tell a joke</button>
+  </div>
+
+  <div id="input-row">
+    <textarea
+      id="user-input"
+      rows="1"
+      placeholder="Type a message…"
+      aria-label="Message input"
+    ></textarea>
+    <button id="send-btn" aria-label="Send message" disabled>
+      <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </div>
+
+</div>
 
     <footer>
         <div class="container">
@@ -900,4 +427,166 @@
             document.getElementById('donate-screen').classList.remove('hidden');
             document.getElementById('home-screen').classList
         }
+
+        // ── CONFIG ────────────────────────────────────────────────────────
+        // Set this to your LocalTunnel public URL, e.g.:
+        //   const SERVER = "https://my-qwen-server.loca.lt";
+        const SERVER = "https://fdcb-134-238-27-55.ngrok-free.app";
+
+        const STATUS_INTERVAL = 15_000;   // ms between status polls
+
+        // ── STATE ─────────────────────────────────────────────────────────
+        let isOpen    = false;
+        let isOnline  = false;
+        let isWaiting = false;
+        const history = [];   // { role, content }
+
+        // ── ELEMENTS ──────────────────────────────────────────────────────
+        const launchBtn     = document.getElementById("launch-btn");
+        const chatWidget    = document.getElementById("chat-widget");
+        const chatBody      = document.getElementById("chat-body");
+        const userInput     = document.getElementById("user-input");
+        const sendBtn       = document.getElementById("send-btn");
+        const statusDot     = document.getElementById("status-dot");
+        const statusText    = document.getElementById("status-text");
+        const offlineNotice = document.getElementById("offline-notice");
+
+        // ── TOGGLE WIDGET ─────────────────────────────────────────────────
+        function toggleChat() {
+        isOpen = !isOpen;
+        chatWidget.classList.toggle("open", isOpen);
+        launchBtn.querySelector(".icon-chat").style.display  = isOpen ? "none"  : "block";
+        launchBtn.querySelector(".icon-close").style.display = isOpen ? "block" : "none";
+        if (isOpen) userInput.focus();
+        }
+        launchBtn.addEventListener("click", toggleChat);
+
+        // ── STATUS POLLING ────────────────────────────────────────────────
+        async function checkStatus() {
+        try {
+            const res = await fetch(`${SERVER}/status`, 
+            { 
+            method: "GET", 
+            signal: AbortSignal.timeout(5000),
+            headers: { "ngrok-skip-browser-warning": "true" },
+            });
+            setOnline(res.ok);
+        } catch {
+            setOnline(false);
+        }
+        }
+
+        function setOnline(online) {
+        isOnline = online;
+
+        statusDot.className  = online ? "online" : "offline";
+        statusText.textContent = online ? "Online" : "Offline";
+        launchBtn.classList.toggle("online", online);
+
+        chatWidget.classList.toggle("offline", !online);
+        offlineNotice.classList.toggle("show", !online);
+
+        sendBtn.disabled = !online || isWaiting;
+        }
+
+        checkStatus();
+        setInterval(checkStatus, STATUS_INTERVAL);
+
+        // ── MESSAGE RENDERING ─────────────────────────────────────────────
+        function appendMessage(role, text) {
+        const div = document.createElement("div");
+        div.className = `msg ${role}`;
+        div.textContent = text;
+        chatBody.appendChild(div);
+        chatBody.scrollTop = chatBody.scrollHeight;
+        return div;
+        }
+
+        function showTyping() {
+        const el = document.createElement("div");
+        el.className = "typing-dots";
+        el.id = "typing";
+        el.innerHTML = "<span></span><span></span><span></span>";
+        chatBody.appendChild(el);
+        chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        function hideTyping() {
+        document.getElementById("typing")?.remove();
+        }
+
+        // ── SHORTCUT CHIPS ────────────────────────────────────────────────
+        const shortcutsEl = document.getElementById("shortcuts");
+        let chipsVisible = true;
+
+        function hideChips() {
+        if (!chipsVisible) return;
+        chipsVisible = false;
+        shortcutsEl.classList.add("hidden");
+        }
+
+        shortcutsEl.addEventListener("click", e => {
+        const chip = e.target.closest(".chip");
+        if (!chip || !isOnline || isWaiting) return;
+        const msg = chip.dataset.msg;
+        userInput.value = msg;
+        sendMessage();
+        });
+
+        // ── SEND MESSAGE ──────────────────────────────────────────────────
+        async function sendMessage() {
+        const text = userInput.value.trim();
+        if (!text || !isOnline || isWaiting) return;
+
+        userInput.value = "";
+        userInput.style.height = "auto";
+        isWaiting = true;
+        sendBtn.disabled = true;
+
+        appendMessage("user", text);
+        history.push({ role: "user", content: text });
+        hideChips();
+
+        showTyping();
+
+        try {
+            const res = await fetch(`${SERVER}/chat`, {
+            method: "POST",
+            headers: { 
+                "Content-Type": "application/json",
+                "ngrok-skip-browser-warning": "true",
+            },
+            body: JSON.stringify({ messages: history }),
+            signal: AbortSignal.timeout(60_000),
+            });
+
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            const data = await res.json();
+            const reply = data.reply ?? "(no response)";
+
+            hideTyping();
+            appendMessage("assistant", reply);
+            history.push({ role: "assistant", content: reply });
+
+        } catch (err) {
+            hideTyping();
+            appendMessage("system", `⚠ Error: ${err.message}`);
+            setOnline(false);
+        } finally {
+            isWaiting = false;
+            sendBtn.disabled = !isOnline;
+            userInput.focus();
+        }
+        }
+
+        sendBtn.addEventListener("click", sendMessage);
+        userInput.addEventListener("keydown", e => {
+        if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+        });
+
+        // Auto-grow textarea
+        userInput.addEventListener("input", () => {
+        userInput.style.height = "auto";
+        userInput.style.height = Math.min(userInput.scrollHeight, 90) + "px";
+        });
      </script>
