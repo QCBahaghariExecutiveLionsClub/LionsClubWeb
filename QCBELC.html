@@ -569,7 +569,7 @@
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             const data = await res.json();
             // const reply = data.reply ?? "(no response)";
-            const reply = data.response || "I'm sorry, I couldn't process that. Please try again.";
+            const reply = data.reply || "I'm sorry, I couldn't process that. Please try again.";
 
             conversationHistory.push({ role: 'user', content: text });
             conversationHistory.push({ role: 'assistant', content: reply });
