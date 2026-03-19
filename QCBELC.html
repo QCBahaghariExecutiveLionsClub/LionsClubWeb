@@ -545,7 +545,7 @@
         sendBtn.disabled = true;
 
         appendMessage("user", text);
-        history.push({ role: "user", content: text });
+        // history.push({ role: "user", content: text });
         hideChips();
 
         showTyping();
@@ -565,18 +565,19 @@
             signal: AbortSignal.timeout(60_000),
             });
 
-            conversationHistory.push({ role: 'user',      content: text });
-            conversationHistory.push({ role: 'assistant', content: botReply });
-            if (conversationHistory.length > 20) conversationHistory = conversationHistory.slice(-20);
-
-            
+    
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             const data = await res.json();
-            const reply = data.reply ?? "(no response)";
+            // const reply = data.reply ?? "(no response)";
+            const reply = data.response || "I'm sorry, I couldn't process that. Please try again.";
+
+            conversationHistory.push({ role: 'user', content: text });
+            conversationHistory.push({ role: 'assistant', content: reply });
+            if (conversationHistory.length > 20) conversationHistory = conversationHistory.slice(-20);
 
             hideTyping();
             appendMessage("assistant", reply);
-            history.push({ role: "assistant", content: reply });
+            // history.push({ role: "assistant", content: reply });
 
         } catch (err) {
             hideTyping();
